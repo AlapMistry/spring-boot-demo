@@ -1,0 +1,20 @@
+# Git
+.git
+.gitignore
+
+# Maven
+target/
+!target/spring-boot-demo-0.0.1-SNAPSHOT.war
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+
+# Misc
+README.md
+HELP.md
+*.log
