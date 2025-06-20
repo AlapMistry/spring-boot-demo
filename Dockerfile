@@ -23,10 +23,14 @@ FROM eclipse-temurin:17-jre
 WORKDIR /app
 
 # Copy the built artifact from the build stage
-COPY --from=build /app/target/spring-boot-demo-0.0.1-SNAPSHOT.war app.war
+COPY --from=build /app/target/spring-boot-demo-0.0.1-SNAPSHOT.war /app/app.war
+
+# Copy entry point script
+COPY entry-point.sh /app/entry-point.sh
+RUN chmod +x /app/entry-point.sh && ls -la /app/app.war
 
 # Set the startup command
-ENTRYPOINT ["java", "-jar", "app.war"]
+ENTRYPOINT ["/app/entry-point.sh"]
 
 # Expose the port the app runs on
 EXPOSE 8080
